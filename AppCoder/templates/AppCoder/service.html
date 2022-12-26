@@ -1,0 +1,26 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="mb-5">Car's list</h1>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+
+<ul>
+    <h1>Service's list</h1>
+
+    {% for service in services %}
+    <li> Service type: {{ service.type }} // Service time: {{ service.time }} hours // Service price: ${{ service.price }}</li>
+
+    <a class="btn btn-danger" href="{% url 'deleteService'  service.id  %}">Delete </a>
+    <a class="btn btn-success" href="{% url 'serviceEdit'  service.id  %}">Edit</a>
+    {% endfor %}
+
+
+</ul>
+
+<h2>{{ mensaje }}</h2>
+<a class="btn btn-primary" href="{% url 'serviceForm'  %}">Add Service</a>
+{% endblock %}

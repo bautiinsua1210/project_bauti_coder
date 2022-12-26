@@ -1,0 +1,27 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="mb-5">Editing Service: {{ service.type }} </h1>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+
+<h3>{{ mensaje }}</h3>
+
+<form action="{% url 'serviceEdit' service.id %}" method="POST"> {% csrf_token %}
+
+    <table>
+    
+        {{ form.as_table }}
+    
+    </table>
+    
+    <input type="submit" value="Save changes">
+    
+    
+    </form>
+
+
+{% endblock %}

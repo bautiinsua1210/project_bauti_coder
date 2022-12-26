@@ -1,0 +1,26 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="mb-5">Car's list</h1>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+
+<ul>
+    <h1>Car's list</h1>
+
+    {% for car in cars %}
+    <li>Brand: {{ car.brand }} // Model: {{ car.model }} // Year: {{ car.year }} // Mile(s): {{ car.mile }}</li>
+
+    <a class="btn btn-danger" href="{% url 'deleteCar'  car.id  %}">Delete </a>
+    <a class="btn btn-success" href="{% url 'carEdit'  car.id  %}">Edit</a>
+    {% endfor %}
+
+
+</ul>
+
+<h2>{{ mensaje }}</h2>
+<a class="btn btn-primary" href="{% url 'carForm'  %}">Add Car</a>
+{% endblock %}
